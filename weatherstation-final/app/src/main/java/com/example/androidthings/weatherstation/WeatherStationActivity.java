@@ -153,14 +153,13 @@ public class WeatherStationActivity extends Activity {
     /**
      * Update the 7-segment display with the latest temperature value.
      *
-     * @param event Latest sensor event.
+     * @param temperature Latest temperature value.
      */
-    private void updateSensorDisplay(SensorEvent event) {
-        final float value = event.values[0];
+    private void updateSensorDisplay(float temperature) {
 
         if (mDisplay != null) {
             try {
-                mDisplay.display(value);
+                mDisplay.display(temperature);
             } catch (IOException e) {
                 Log.e(TAG, "Error updating display", e);
             }
@@ -170,12 +169,10 @@ public class WeatherStationActivity extends Activity {
     /**
      * Update LED strip based on the latest pressure value.
      *
-     * @param event Latest sensor event.
+     * @param pressure Latest pressure value.
      */
-    private void updateBarometerDisplay(SensorEvent event) {
-        final float pressure = event.values[0];
-
-        // Update led strip.
+    private void updateBarometerDisplay(float pressure) {
+        
         if (mLedstrip != null) {
             try {
                 int[] colors = RainbowUtil.getWeatherStripColors(pressure);
@@ -190,11 +187,13 @@ public class WeatherStationActivity extends Activity {
     private SensorEventListener mSensorEventListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
+            final float value = event.values[0];
+
             if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
-                updateSensorDisplay(event);
+                updateSensorDisplay(value);
             }
             if (event.sensor.getType() == Sensor.TYPE_PRESSURE) {
-                updateBarometerDisplay(event);
+                updateBarometerDisplay(value);
             }
         }
 
