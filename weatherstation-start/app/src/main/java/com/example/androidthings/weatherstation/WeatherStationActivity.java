@@ -17,7 +17,6 @@
 package com.example.androidthings.weatherstation;
 
 import android.app.Activity;
-import android.hardware.SensorEvent;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -59,18 +58,18 @@ public class WeatherStationActivity extends Activity {
     /**
      * Update the 7-segment display with the latest temperature value.
      *
-     * @param event Latest sensor event.
+     * @param temperature Latest temperature value.
      */
-    private void updateSensorDisplay(SensorEvent event) {
+    private void updateTemperatureDisplay(float temperature) {
         //TODO: Add code to write a value to the segment display
     }
 
     /**
      * Update LED strip based on the latest pressure value.
      *
-     * @param event Latest sensor event.
+     * @param pressure Latest pressure value.
      */
-    private void updateBarometerDisplay(SensorEvent event) {
+    private void updateBarometerDisplay(float pressure) {
         //TODO: Add code to send color data to the LED strip
     }
 

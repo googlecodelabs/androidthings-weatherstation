@@ -155,7 +155,7 @@ public class WeatherStationActivity extends Activity {
      *
      * @param temperature Latest temperature value.
      */
-    private void updateSensorDisplay(float temperature) {
+    private void updateTemperatureDisplay(float temperature) {
 
         if (mDisplay != null) {
             try {
@@ -190,9 +190,8 @@ public class WeatherStationActivity extends Activity {
             final float value = event.values[0];
 
             if (event.sensor.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
-                updateSensorDisplay(value);
-            }
-            if (event.sensor.getType() == Sensor.TYPE_PRESSURE) {
+                updateTemperatureDisplay(value);
+            } else if (event.sensor.getType() == Sensor.TYPE_PRESSURE) {
                 updateBarometerDisplay(value);
             }
         }
