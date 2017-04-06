@@ -1,6 +1,7 @@
 # Android Things Weatherstation Codelab
 
-This folder contains the source code for the [Weatherstation codelab](https://todo.real.link)
+This folder contains the source code for the
+[Weatherstation codelab](https://codelabs.developers.google.com/codelabs/androidthings-weatherstation)
 
 ### License
 
