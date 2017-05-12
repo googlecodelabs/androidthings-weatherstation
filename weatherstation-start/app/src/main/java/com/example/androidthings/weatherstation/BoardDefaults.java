@@ -25,10 +25,13 @@ import java.util.List;
 @SuppressWarnings("WeakerAccess")
 public final class BoardDefaults {
     private static final String DEVICE_RPI3 = "rpi3";
+    private static final String DEVICE_IMX7 = "imx7d_pico";
 
     public static String getI2cBus() {
         switch (Build.DEVICE) {
             case DEVICE_RPI3:
+                return "I2C1";
+            case DEVICE_IMX7:
                 return "I2C1";
             default:
                 throw new IllegalArgumentException("Unsupported device: " + Build.DEVICE);
@@ -39,6 +42,8 @@ public final class BoardDefaults {
         switch (Build.DEVICE) {
             case DEVICE_RPI3:
                 return "SPI0.0";
+            case DEVICE_IMX7:
+                return "SPI3.1";
             default:
                 throw new IllegalArgumentException("Unsupported device: " + Build.DEVICE);
         }
