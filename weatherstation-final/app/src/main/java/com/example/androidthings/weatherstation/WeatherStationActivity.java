@@ -80,6 +80,8 @@ public class WeatherStationActivity extends Activity {
             int[] colors = new int[7];
             Arrays.fill(colors, Color.RED);
             mLedstrip.write(colors);
+            // Because of a known APA102 issue, write the initial value twice.
+            mLedstrip.write(colors);
             Log.d(TAG, "Initialized SPI LED strip");
         } catch (IOException e) {
             throw new RuntimeException("Error initializing LED strip", e);
