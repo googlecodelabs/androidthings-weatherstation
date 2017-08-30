@@ -28,6 +28,7 @@ import android.util.Log;
 import com.google.android.things.contrib.driver.apa102.Apa102;
 import com.google.android.things.contrib.driver.bmx280.Bmx280SensorDriver;
 import com.google.android.things.contrib.driver.ht16k33.AlphanumericDisplay;
+import com.google.android.things.contrib.driver.rainbowhat.RainbowHat;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -54,7 +55,8 @@ public class WeatherStationActivity extends Activity {
 
         // Initialize temperature/pressure sensors
         try {
-            mEnvironmentalSensorDriver = new Bmx280SensorDriver(BoardDefaults.getI2cBus());
+
+            mEnvironmentalSensorDriver =  RainbowHat.createSensorDriver();
             // Register the drivers with the framework
             mEnvironmentalSensorDriver.registerTemperatureSensor();
             mEnvironmentalSensorDriver.registerPressureSensor();
@@ -65,7 +67,7 @@ public class WeatherStationActivity extends Activity {
 
         // Initialize 7-segment display
         try {
-            mDisplay = new AlphanumericDisplay(BoardDefaults.getI2cBus());
+            mDisplay = RainbowHat.openDisplay();
             mDisplay.setEnabled(true);
             mDisplay.display("1234");
             Log.d(TAG, "Initialized I2C Display");
@@ -75,7 +77,7 @@ public class WeatherStationActivity extends Activity {
 
         // Initialize LED strip
         try {
-            mLedstrip = new Apa102(BoardDefaults.getSpiBus(), Apa102.Mode.BGR);
+            mLedstrip = RainbowHat.openLedStrip();
             mLedstrip.setBrightness(LEDSTRIP_BRIGHTNESS);
             int[] colors = new int[7];
             Arrays.fill(colors, Color.RED);
