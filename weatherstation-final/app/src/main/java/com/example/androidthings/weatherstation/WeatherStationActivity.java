@@ -143,8 +143,8 @@ public class WeatherStationActivity extends Activity {
 
         if (mLedstrip != null) {
             try {
-                mLedstrip.write(new int[7]);
                 mLedstrip.setBrightness(0);
+                mLedstrip.write(new int[7]);
                 mLedstrip.close();
             } catch (IOException e) {
                 Log.e(TAG, "Error closing LED strip", e);
@@ -176,7 +176,7 @@ public class WeatherStationActivity extends Activity {
      * @param pressure Latest pressure value.
      */
     private void updateBarometerDisplay(float pressure) {
-        
+
         if (mLedstrip != null) {
             try {
                 int[] colors = RainbowUtil.getWeatherStripColors(pressure);
