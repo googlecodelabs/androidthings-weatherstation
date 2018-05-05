@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.google.android.things:androidthings:+'
+    compileOnly 'com.google.android.things:androidthings:1.0'
 
     //TODO: Add library driver artifacts here
 }

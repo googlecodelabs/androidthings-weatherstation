@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.google.android.things:androidthings:+'
-    implementation 'com.google.android.things.contrib:driver-rainbowhat:+'
+    compileOnly 'com.google.android.things:androidthings:1.0'
+    implementation 'com.google.android.things.contrib:driver-rainbowhat:1.0'
 
 }
